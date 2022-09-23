@@ -1,0 +1,40 @@
+.form-container{
+    width: 700px;
+    height: 70px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+
+}
+
+.location-input {
+    width: 80%;
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+}
+.search-button{
+    border: 0;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #4787fc;
+    cursor: pointer;
+}
+.search-button img {
+    width: 30px;
+}
+.search-button:hover {
+    background-color: #2960c3;
+}
+.search-button:active{
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
