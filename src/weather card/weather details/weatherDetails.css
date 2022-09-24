@@ -1,0 +1,6 @@
+
+.weather-data-container{
+    display: flex;
+    height: 120px;
+    width: 600px;
+}

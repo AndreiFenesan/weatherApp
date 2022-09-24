@@ -1,0 +1,7 @@
+.icon-and-description-container{
+    display: flex;
+    align-items: center;
+}
+.weather-description{
+    font-size: 25px;
+}

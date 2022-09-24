@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import LocationInput from "../LocationInput/LocationInput";
+import WeatherCard from "../weather card/WeatherCard";
 function App() {
     const [lastIntroducedLocationName,setLastIntroducedLocationName] = React.useState("");
 
@@ -22,6 +23,7 @@ function App() {
     return(
         <div className={"main-container"}>
             <LocationInput searchButtonClickHandler={searchButtonClickHandler}/>
+            <WeatherCard/>
         </div>
     )
 }
