@@ -4,6 +4,11 @@
     background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(34,193,195,1) 30%, rgba(253,187,45,1) 65%);
     border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
 }
 
 

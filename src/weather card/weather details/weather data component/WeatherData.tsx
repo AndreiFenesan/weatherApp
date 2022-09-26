@@ -6,7 +6,7 @@ interface weatherDataProps {
     icon:string
 }
 export default function WeatherData ({value,icon}:weatherDataProps):JSX.Element {
-    return <div className={"humidity-container"}>
+    return <div className={"data-container"}>
         <img className={"weather-icon"} src={icon}/>
         <h3>{value}</h3>
     </div>
