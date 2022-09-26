@@ -5,21 +5,20 @@ interface LocationAndTimeProps {
     timezone:number
 }
 
-function getLocalDate(timezone:number) :Date{
-    return new Date(new Date().getTime() + timezone * 1000);
+function getLocalDate(timezone:number) :string{
+    //returns the local date in ISO format
+    const date = new Date(new Date().getTime() + timezone * 1000).toISOString();
+    console.log(date);
+    return date;
 }
 
 function getLocalTime(timezone:number) :string{
-    const localDate = getLocalDate(timezone);
-    const hours = localDate.getHours();
-    const minutes = localDate.getMinutes();
+    //returns the current local time of a location based on timezone
+    const localDateString = getLocalDate(timezone);//localeDateString is in ISO format
+    const time = localDateString.split('T')[1];
+    const [hour,minute] = time.split(':');
 
-    let hoursString,minutesString :string;
-
-    minutesString = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    hoursString = hours <10 ? `0${hours}` : `${hours}`;
-
-    return `${hoursString}:${minutesString}`;
+    return `${hour}:${minute}`;
 }
 
 export default function LocationNameAndTime({locationName,timezone}:LocationAndTimeProps){
