@@ -4,3 +4,11 @@
     padding: 5%;
     background-color: cornflowerblue;
 }
+
+.weather-cards-container{
+    display: flex;
+    height: 70vh;
+    flex-direction: column;
+    overflow: scroll;
+
+}
