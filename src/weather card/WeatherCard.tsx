@@ -17,7 +17,9 @@ interface WeatherProps {
 }
 
 export default function WeatherCard({windSpeed,humidity,pressure,temperature,icon,timezone,description,locationName}:WeatherProps):JSX.Element {
-    return <div className={"weather-card-container"}>
+
+
+    return <div  className={"weather-card-container"}>
         <LocationNameAndTime locationName={locationName} timezone={timezone}/>
         <div className={"weather-details"}>
             <WeatherIconAndDescription description={description} icon={icon}/>

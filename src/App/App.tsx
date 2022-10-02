@@ -18,7 +18,7 @@ function App() {
     const [lastIntroducedLocationName,setLastIntroducedLocationName] = React.useState("");
     const [locationsData,setLocationsData] = React.useState<LocationData[]>([]);
 
-    const [fetchError,setFetchError] = React.useState<Error | null>(null);
+    const [error,setError] = React.useState<Error | null>(null);
 
     function searchButtonClickHandler(locationName:string):void{
         //sets the introduced value for lastIntroducedLocationName
@@ -58,15 +58,16 @@ function App() {
                 })
                 .then(data=>{
                     const extractedData=extractWeatherData(data);
-                    setFetchError(null);
+                    setError(null);
                     setLocationsData(prevState =>{
                         if(isLocationNameAlreadyDisplayed(prevState,extractedData.locationName)){
+                            setError(Error("Location already exists"));
                             return [...prevState];
                         }
                         return [...prevState,extractedData];
                     })
                 })
-                .catch(error => setFetchError(error))
+                .catch(error => setError(error))
         }
     },[lastIntroducedLocationName]);
 
@@ -79,12 +80,13 @@ function App() {
                                                                         humidity={locationData.humidity}
                                                                         windSpeed={locationData.windSpeed}
                                                                         description={locationData.description}
-                                                                        temperature={locationData.temperature}/>);
+                                                                        temperature={locationData.temperature}
+                                                                        key={locationData.locationName}/>);
 
 
     return(
         <div className={"main-container"}>
-            {fetchError && <FetchError message={fetchError.message}/>}
+            {error && <FetchError message={error.message}/>}
             <LocationInput searchButtonClickHandler={searchButtonClickHandler}/>
             <div className={"weather-cards-container"}>
                 {locationsData.length>0 && weatherCards}
