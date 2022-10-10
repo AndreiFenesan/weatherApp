@@ -1,8 +1,9 @@
-.delete-card-icon{
+.delete-card-icon {
     width: 25px;
     height: 25px;
 }
-.delete-card-button{
+
+.delete-card-button {
     cursor: pointer;
 
     width: 45px;
@@ -22,12 +23,13 @@
     transition: 500ms;
 }
 
-.delete-card-button:hover{
+.delete-card-button:hover {
     transition: 200ms;
     border-radius: 50%;
     background-color: cornflowerblue;
 }
-.delete-card-button:active{
+
+.delete-card-button:active {
     background-color: #4e7ac8;
     transform: scale(0.98);
     /* Scaling button to 0.98 to its original size */

@@ -1,8 +1,8 @@
-.weather-card-container{
+.weather-card-container {
     height: 30vh;
     width: 60vw;
-    background: rgb(34,193,195);
-    background: linear-gradient(0deg, rgba(34,193,195,1) 30%, rgba(253,187,45,1) 65%);
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 30%, rgba(253, 187, 45, 1) 65%);
     border-radius: 30px;
 
     position: relative;
@@ -15,7 +15,7 @@
 }
 
 
-.weather-details{
+.weather-details {
     display: flex;
     align-items: center;
     justify-content: space-between;

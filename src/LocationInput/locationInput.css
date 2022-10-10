@@ -1,7 +1,7 @@
-.form-container{
+.form-container {
     width: 700px;
     height: 70px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     border-radius: 60px;
@@ -18,7 +18,8 @@
     padding: 24px 20px;
     font-size: 20px;
 }
-.search-button{
+
+.search-button {
     border: 0;
     border-radius: 50%;
     width: 60px;
@@ -26,13 +27,16 @@
     background-color: #4787fc;
     cursor: pointer;
 }
+
 .search-button img {
     width: 30px;
 }
+
 .search-button:hover {
     background-color: #2960c3;
 }
-.search-button:active{
+
+.search-button:active {
     transform: scale(0.98);
     /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);

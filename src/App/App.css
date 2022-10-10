@@ -1,11 +1,11 @@
-.main-container{
+.main-container {
     width: 100%;
     height: 100vh;
     padding: 5%;
     background-color: cornflowerblue;
 }
 
-.weather-cards-container{
+.weather-cards-container {
     display: flex;
     height: 70vh;
     flex-direction: column;

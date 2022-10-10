@@ -1,13 +1,13 @@
 
-.locationName-and-time-container{
+.locationName-and-time-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 30px;
 }
 
-.location-name{
-    font-size:70px;
+.location-name {
+    font-size: 70px;
     color: white;
 }
 

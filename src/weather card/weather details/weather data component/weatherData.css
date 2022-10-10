@@ -1,6 +1,5 @@
 
-
-.data-container{
+.data-container {
     padding: 20px;
     min-width: 100px;
     display: flex;
@@ -8,6 +7,7 @@
     align-items: center;
     justify-content: flex-start;
 }
+
 .weather-icon {
     width: 40px;
     height: 40px;
