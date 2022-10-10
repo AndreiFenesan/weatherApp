@@ -8,7 +8,6 @@ interface LocationAndTimeProps {
 function getLocalDate(timezone:number) :string{
     //returns the local date in ISO format
     const date = new Date(new Date().getTime() + timezone * 1000).toISOString();
-    console.log(date);
     return date;
 }
 

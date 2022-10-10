@@ -3,6 +3,7 @@ import './App.css';
 import LocationInput from "../LocationInput/LocationInput";
 import WeatherCard from "../weather card/WeatherCard";
 import FetchError from "../error component/FetchError";
+
 interface LocationData{
     locationName:string,
     timezone:number,
@@ -72,6 +73,14 @@ function App() {
     },[lastIntroducedLocationName]);
 
 
+    function deleteCardButtonHandler (locationName:string){
+        //removes from locationsData the location of which name is locationName
+        setLocationsData(prevLocationsData => {
+            //const indexToDelete = prevLocationsData.findIndex(locationData => locationData.locationName===locationName);
+            return prevLocationsData.filter(locationData => locationData.locationName !== locationName);
+        })
+    }
+
     //map over locations
     const weatherCards = locationsData.map(locationData => <WeatherCard locationName={locationData.locationName}
                                                                         icon={locationData.icon}
@@ -81,6 +90,7 @@ function App() {
                                                                         windSpeed={locationData.windSpeed}
                                                                         description={locationData.description}
                                                                         temperature={locationData.temperature}
+                                                                        deleteCardButtonHandler={() => deleteCardButtonHandler(locationData.locationName)}
                                                                         key={locationData.locationName}/>);
 
 
