@@ -1,6 +1,5 @@
 import React from "react";
 import "./weatherData.css"
-import humidityIcon from "./728093.png";
 
 interface weatherDataProps {
     value: string
@@ -9,7 +8,7 @@ interface weatherDataProps {
 
 export default function WeatherData({value, icon}: weatherDataProps): JSX.Element {
     return <div className={"data-container"}>
-        <img className={"weather-icon"} src={icon}/>
+        <img className={"weather-icon"} src={icon} alt={"weather icon"}/>
         <h3>{value}</h3>
     </div>
 }

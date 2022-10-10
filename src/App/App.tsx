@@ -65,7 +65,7 @@ function App() {
                             setError(Error("Location already exists"));
                             return [...prevState];
                         }
-                        return [...prevState, extractedData];
+                        return [extractedData,...prevState];
                     })
                 })
                 .catch(error => setError(error))
