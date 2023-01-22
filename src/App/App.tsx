@@ -3,6 +3,10 @@ import './App.css';
 import LocationInput from "../LocationInput/LocationInput";
 import WeatherCard from "../weather card/WeatherCard";
 import FetchError from "../error component/FetchError";
+import bgRainImage from "../rain.jpg"
+import bgMainImage from "../weatherMainBg.webp"
+import bgMistImage from "../mist.jpeg"
+import bgSunnyImage from "../sunny.jpg"
 
 interface LocationData {
     locationName: string,
@@ -13,10 +17,11 @@ interface LocationData {
     humidity: number,
     pressure: number,
     windSpeed: number,
+    mainWeather: string,
 }
 
 function App() {
-    const [lastIntroducedLocationName, setLastIntroducedLocationName] = React.useState("");
+    const [lastIntroducedLocationName, setLastIntroducedLocationName] = React.useState({"name": "", "clickCount": 0});
     const [locationsData, setLocationsData] = React.useState<LocationData[]>([]);
 
     const [error, setError] = React.useState<Error | null>(null);
@@ -24,21 +29,28 @@ function App() {
     function searchButtonClickHandler(locationName: string): void {
         //sets the introduced value for lastIntroducedLocationName
         if (locationName !== "") {
-            setLastIntroducedLocationName(locationName);
+            setLastIntroducedLocationName(prevState => {
+                return {
+                    "name": locationName,
+                    "clickCount": prevState.clickCount + 1,
+                }
+            });
         }
     }
 
     React.useEffect(() => {
         function extractWeatherData(data: any): LocationData {
+            console.log(data)
             const locationName: string = data.name;
             const timezone: number = data.timezone;
             const description: string = data.weather[0].description;
             const icon: string = data.weather[0].icon;
+            const mainWeather = data.weather[0].main;
             const temperature: number = data.main.temp;
             const humidity: number = data.main.humidity;
             const pressure: number = data.main.pressure;
             const windSpeed: number = data.wind.speed;
-            return {locationName, timezone, description, icon, temperature, humidity, pressure, windSpeed};
+            return {locationName, timezone, description, icon, temperature, humidity, pressure, windSpeed, mainWeather};
 
         }
 
@@ -48,8 +60,8 @@ function App() {
             return locations.find(location => location.locationName === locationName) !== undefined;
         }
 
-        if (lastIntroducedLocationName !== "") {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${lastIntroducedLocationName}&units=metric&appid=${process.env["REACT_APP_API_KEY"]}`;
+        if (lastIntroducedLocationName.name !== "") {
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${lastIntroducedLocationName.name}&units=metric&appid=${process.env["REACT_APP_API_KEY"]}`;
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
@@ -65,12 +77,12 @@ function App() {
                             setError(Error("Location already exists"));
                             return [...prevState];
                         }
-                        return [extractedData,...prevState];
+                        return [extractedData, ...prevState];
                     })
                 })
                 .catch(error => setError(error))
         }
-    }, [lastIntroducedLocationName]);
+    }, [lastIntroducedLocationName.clickCount]);
 
     function deleteCardButtonHandler(locationName: string) {
         //removes from locationsData the location of which name is locationName
@@ -90,11 +102,30 @@ function App() {
                                                                         description={locationData.description}
                                                                         temperature={locationData.temperature}
                                                                         deleteCardButtonHandler={() => deleteCardButtonHandler(locationData.locationName)}
-                                                                        key={locationData.locationName}/>);
-
-
+                                                                        key={locationData.locationName}
+                                                                        mainWeather={locationData.mainWeather.toLocaleLowerCase()}/>);
+    let backgroundImage = bgMainImage;
+    if (locationsData) {
+        if (locationsData[0]) {
+            const weather = locationsData[0].mainWeather;
+            switch (weather.toLocaleLowerCase()) {
+                case "rain":
+                    backgroundImage = bgRainImage;
+                    break;
+                case "drizzle":
+                    backgroundImage = bgRainImage;
+                    break;
+                case "mist":
+                    backgroundImage = bgMistImage;
+                    break;
+                case "clear":
+                    backgroundImage = bgSunnyImage;
+                    break;
+            }
+        }
+    }
     return (
-        <div className={"main-container"}>
+        <div className={"main-container"} style={{backgroundImage: `url(" ${backgroundImage} ")`}}>
             {error && <FetchError message={error.message}/>}
             <LocationInput searchButtonClickHandler={searchButtonClickHandler}/>
             <div className={"weather-cards-container"}>

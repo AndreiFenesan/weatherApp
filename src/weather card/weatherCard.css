@@ -1,8 +1,11 @@
 .weather-card-container {
+    --backgroundColor:linear-gradient(0deg, rgba(34, 193, 195, 0.8) 30%, rgba(253, 187, 45, 0.8) 65%);
+    /*--backgroundColor:linear-gradient(0deg, rgba(184, 185, 180, 0.8) 30%, rgba(102, 108, 104, 0.8) 65%);*/
+    /*--backgroundColor:linear-gradient(0deg, rgba(125, 159, 176, 0.8) 30%, rgba(22, 124, 143, 0.8) 65%);*/
     height: 30vh;
     width: 60vw;
     background: rgb(34, 193, 195);
-    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 30%, rgba(253, 187, 45, 1) 65%);
+    background: var(--backgroundColor);
     border-radius: 30px;
 
     position: relative;
@@ -13,7 +16,6 @@
     padding: 5px;
     margin: 10px;
 }
-
 
 .weather-details {
     display: flex;
