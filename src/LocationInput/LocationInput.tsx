@@ -1,6 +1,6 @@
 import React from "react";
 import "./locationInput.css";
-import searchIcon from "../icons8-search-32.png"
+import searchIcon from "../images/icons8-search-32.png"
 
 interface LocationInputProps {
     searchButtonClickHandler: (locationName: string) => void,

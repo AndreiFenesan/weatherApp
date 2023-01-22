@@ -3,10 +3,10 @@ import './App.css';
 import LocationInput from "../LocationInput/LocationInput";
 import WeatherCard from "../weather card/WeatherCard";
 import FetchError from "../error component/FetchError";
-import bgRainImage from "../rain.jpg"
-import bgMainImage from "../weatherMainBg.webp"
-import bgMistImage from "../mist.jpeg"
-import bgSunnyImage from "../sunny.jpg"
+import bgRainImage from "../images/rain.jpg"
+import bgMainImage from "../images/weatherMainBg.webp"
+import bgMistImage from "../images/mist.jpeg"
+import bgSunnyImage from "../images/sunny.jpg"
 
 interface LocationData {
     locationName: string,
