@@ -3,12 +3,13 @@
     height: 100vh;
     padding: 5%;
     background-color: cornflowerblue;
+    user-select: none;
 }
 
 .weather-cards-container {
     display: flex;
     height: 70vh;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
 
 }

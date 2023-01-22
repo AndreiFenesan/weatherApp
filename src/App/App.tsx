@@ -49,7 +49,7 @@ function App() {
         }
 
         if (lastIntroducedLocationName !== "") {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${lastIntroducedLocationName}&units=metric&appid=ef875aab8139ba42eefcd69852c22707`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${lastIntroducedLocationName}&units=metric&appid=${process.env["REACT_APP_API_KEY"]}`;
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
@@ -71,7 +71,6 @@ function App() {
                 .catch(error => setError(error))
         }
     }, [lastIntroducedLocationName]);
-
 
     function deleteCardButtonHandler(locationName: string) {
         //removes from locationsData the location of which name is locationName
